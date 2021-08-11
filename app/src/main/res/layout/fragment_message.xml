@@ -8,6 +8,7 @@
         android:layout_height="match_parent"
         android:textSize="20sp"
         android:gravity="center"
+        android:textColor="@color/color_theme"
         android:text="这是信息页面"
         />
 

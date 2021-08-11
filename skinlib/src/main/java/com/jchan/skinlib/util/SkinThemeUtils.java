@@ -11,6 +11,7 @@ import android.os.Build;
  * @description:
  */
 public class SkinThemeUtils {
+
     private static int[] APPCOMPAT_COLOR_PRIMARY_DARK_ATTRS = {
             android.R.attr.colorPrimaryDark
     };
@@ -20,7 +21,7 @@ public class SkinThemeUtils {
 
 
     /**
-     * 获得theme中的属性中定义的 资源id
+     * 获得attrs中的属性中定义的 资源id
      * @param context
      * @param attrs
      * @return

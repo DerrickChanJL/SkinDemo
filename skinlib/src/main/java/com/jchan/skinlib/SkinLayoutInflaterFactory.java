@@ -61,7 +61,6 @@ public class SkinLayoutInflaterFactory implements LayoutInflater.Factory2, Obser
     public SkinLayoutInflaterFactory( Activity activity) {
         this.activity = activity;
         this.skinAttribute = new SkinAttribute();
-
     }
 
     @Nullable
@@ -86,7 +85,6 @@ public class SkinLayoutInflaterFactory implements LayoutInflater.Factory2, Obser
         }
         //拼上前缀尝试去反射
         for (int i = 0; i < mClassPrefixList.length; i++) {
-            Log.e("factory",  mClassPrefixList[i] + name );
             View view = createView(mClassPrefixList[i] + name, context, attrs);
             if(view != null){
                 return view;
@@ -96,8 +94,6 @@ public class SkinLayoutInflaterFactory implements LayoutInflater.Factory2, Obser
     }
 
     private View createView(String name, Context context, AttributeSet attrs) {
-        Log.e("createView",name);
-
         Constructor<? extends View> constructor = finConstructor(context, name);
         try {
             return constructor.newInstance(context, attrs);

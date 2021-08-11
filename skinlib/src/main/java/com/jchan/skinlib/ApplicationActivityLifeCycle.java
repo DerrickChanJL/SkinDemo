@@ -36,11 +36,12 @@ public class ApplicationActivityLifeCycle implements Application.ActivityLifecyc
         /**
          * 更新状态栏
          */
-        Log.e("skin","onActivityCreated "+activity.getClass().getSimpleName());
         SkinThemeUtils.updateStatusBarColor(activity);
 
         //获取布局管理器
         LayoutInflater layoutInflater = activity.getLayoutInflater();
+        //使用自己定义的皮肤工厂
+        SkinLayoutInflaterFactory skinLayoutInflaterFactory = new SkinLayoutInflaterFactory(activity);
         /**
          * android Q 以后不能用
          */
@@ -53,13 +54,13 @@ public class ApplicationActivityLifeCycle implements Application.ActivityLifecyc
 //            Log.e("skin","exception "+e.toString());
 //            e.printStackTrace();
 //        }
-        //使用自己定义的皮肤工厂
-        SkinLayoutInflaterFactory skinLayoutInflaterFactory = new SkinLayoutInflaterFactory(activity);
+//        LayoutInflaterCompat.setFactory2(layoutInflater,skinLayoutInflaterFactory);
+        /**
+         * Android Q 以后解决方式
+         */
         forceSetFactory2(layoutInflater,skinLayoutInflaterFactory);
 
-//        LayoutInflaterCompat.setFactory2(layoutInflater,skinLayoutInflaterFactory);
         mLayoutInflaterFactories.put(activity,skinLayoutInflaterFactory);
-
         mObservable.addObserver(skinLayoutInflaterFactory);
     }
 
@@ -105,11 +106,6 @@ public class ApplicationActivityLifeCycle implements Application.ActivityLifecyc
             mFactory.setAccessible(true);
             Field mFactory2 = inflaterClass.getDeclaredField("mFactory2");
             mFactory2.setAccessible(true);
-//            if (inflater.getFactory2() != null) {
-//                factory.setInterceptFactory2(inflater.getFactory2());
-//            } else if (inflater.getFactory() != null) {
-//                factory.setInterceptFactory(inflater.getFactory());
-//            }
             mFactory2.set(inflater, skinLayoutInflaterFactory);
             mFactory.set(inflater, skinLayoutInflaterFactory);
         } catch (IllegalAccessException e) {

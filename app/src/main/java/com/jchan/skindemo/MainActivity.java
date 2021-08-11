@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar(mBinding.toolbar);
         initFragment();
@@ -60,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         });
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         mBinding.viewPager.setAdapter(adapter);
-
 
         mBinding.llDiscover.setOnClickListener(new View.OnClickListener() {
             @Override

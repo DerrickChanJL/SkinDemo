@@ -61,7 +61,7 @@ public class SkinAttribute {
             //获得属性名 如background
             String attributeName = attrs.getAttributeName(i);
             if(mAttributes.contains(attributeName)){
-                //R.color.xx
+                Log.e("Skin","attributeName: "+attributeName);
                 String attributeValue = attrs.getAttributeValue(i);
                 if(attributeValue.startsWith("#")){
                     continue;
@@ -74,7 +74,7 @@ public class SkinAttribute {
                     Log.e("Skin","attrId "+attrId+" attributeValue "+attributeValue);
                 }else {
                     //正常以@开头
-                    Log.e("attributeValue"," attributeValue "+attributeValue);
+                    Log.e("Skin"," attributeValue "+attributeValue);
                     resId = Integer.parseInt(attributeValue.substring(1));
                 }
                 SkinPair skinPair = new SkinPair(attributeName,resId);

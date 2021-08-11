@@ -48,14 +48,14 @@
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/color_theme"
-            android:textSize="20sp"
-            android:text="Hello"
-            />
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/color_theme"-->
+<!--            android:textSize="20sp"-->
+<!--            android:text="Hello"-->
+<!--            />-->
         <androidx.viewpager.widget.ViewPager
             android:layout_width="match_parent"
             android:layout_height="0dp"
